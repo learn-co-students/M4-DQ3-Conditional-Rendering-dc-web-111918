@@ -3,6 +3,16 @@ import MenuBar from '../components/MenuBar.js'
 import { Profile, Photos, Cocktails, Pokemon} from '../components/Pages.js'
 
 class MainBox extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      activeElement: 'profile'
+    }
+  }
+
+  changeState = (e) => {
+    this.setState({activeElement: e.target.id})
+  }
 
 
   render() {
@@ -13,12 +23,19 @@ class MainBox extends React.Component {
 
     */
 
-    const detailsToDisplay = <div>Hi, I'm a div!</div>
+    // detailsToDisplay = () => {
+    //   switch (this.state.activeElement){
+    //     case 'profile':
+    //       return <Profile />
+    //     case 'profile':
+    //       return <Profile />
+    //   }
+    // }
 
     return (
       <div>
-        <MenuBar />
-        {detailsToDisplay}
+        <MenuBar activeElement={this.changeState}/>
+        <Profile />
       </div>
     )
   }
